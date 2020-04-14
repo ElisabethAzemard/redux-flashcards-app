@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible"
+        content="ie=edge">
+    <title>Redux flashcards</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+</head>
+
+<body>
+    <header class="header">
+        <h1 class="title is-1">Redux flashcards App</h1>
+    </header>
+
+    <section class="section">
+        <h3 class="title is-3">Add a Card</h3>
+        <form id="addCard">
+            <div class="field">
+                <label for="question" class="label">Question:</label>
+                <div class="control">
+                    <input type="text" name="question" class="input">
+                </div>
+            </div>
+            <div class="field">
+                <label for="question" class="label">Answer:</label>
+                <div class="control" class="input">
+                    <textarea name="answer" cols="30" rows="5" class="textarea"></textarea>
+                </div>
+            </div>
+            <button type="submit" class="button is-success" id="addCardButton">Add Card</button>
+        </form>
+    </section>
+
+    <hr>
+
+    <section class="section">
+        <h3 class="title is-3">All cards</h3>
+        <div class="">
+            <ul id="cards" class="columns is-multiline"></ul>
+        </div>
+    </section>
+
+    <hr>
+
+    <section class="section">
+        <h3 class="title is-3">Learn cards</h3>
+        <div id="lesson" class="columns is-multiline">
+        </div>
+    </section>
+
+    <script src="./dist/bundle.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+
+</html>
