@@ -24,6 +24,6 @@ export function showCard(id) {
 
 export const ROTATE_CARD = 'ROTATE_CARD';
 
-export function rotateCard(id, rectoShown) {
-    return { type: ROTATE_CARD, id: id, rectoShown: rectoShown };
+export function rotateCard(id) {
+    return { type: ROTATE_CARD, id: id };
 }

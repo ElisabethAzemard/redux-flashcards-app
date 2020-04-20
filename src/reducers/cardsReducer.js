@@ -4,12 +4,12 @@ const initialList = [
     {
         question: "Where is Brian?",
         answer: "Brian is in the kitchen.",
-        rectoShown: true
+        rotated: false
     },
     {
         question: "Where's my brawley?",
         answer: "Home, obviously.",
-        rectoShown: true
+        rotated: false
     },
 ];
 
@@ -20,18 +20,25 @@ function cardsReducer(cards = initialList, action) {
                 ...cards,
                 {
                     question: action.question,
-                    answer: action.answer
+                    answer: action.answer,
+                    rotated: false
                 }
             ];
 
         case REMOVE_CARD:
             return cards.filter((card, index) => index != action.id);
 
-        case SHOW_CARD:
-            return cards.filter((card, index) => index === action.id);
-
         case ROTATE_CARD:
-            return cards.filter((card, index) => index === action.id).rectoShown === !rectoShown;
+            return cards.map((card, index) => {
+                if (index != action.id) {
+                    return card;
+                } else {
+                    return {
+                        ...card,
+                        rotated: !card.rotated
+                    }
+                }
+            });
 
         default:
             return cards;

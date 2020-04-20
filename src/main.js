@@ -1,5 +1,7 @@
+require('./style.scss');
+
 import store from './store/store';
-import { addCard, removeCard, rotateCard } from './actions/actions';
+import { addCard, removeCard, rotateCard, setCardTransition } from './actions/actions';
 
 console.log(store.getState());
 
@@ -13,15 +15,11 @@ let addCardAnswer = addCardForm['answer'];
 // ------ Redux ------
 store.subscribe(() => {
     rendercards();
+    renderstack();
 });
-
-function deleteCard(index) {
-    store.dispatch(removeCard(index));
-}
 
 function rendercards() {
     let cards = store.getState().cards;
-
     cardsUList.innerHTML = '';
     cards.map((card, index) => {
         let cardItem = `
@@ -44,29 +42,22 @@ function rendercards() {
 }
 
 function renderstack() {
-    let cards = store.getState().cards;
+    let lessonCards = store.getState().cards;
+    console.log("lessonCards:", lessonCards);
 
     lessonCardsUList.innerHTML = '';
-    cards.map((card, index) => {
-        if (card.rectoShown) {
-            let cardItem = `
-            <div data-id="${index}" class="column is-one-quarter">
-                <div class="notification is-primary">
-                    <p>${card.question}</p>
-                </div>
+    lessonCards.forEach((card, index) => {
+        let lessoncardItem = `
+        <div data-id="${index}" class="tile is-parent vertical${card.rotated ? ' rotated' : ''}">
+            <div class="tile is-child notification is-primary face flip ">
+                <p><b>${card.question}</b></p>
             </div>
-                `;
-            lessonCardsUList.innerHTML += cardItem;
-        } else {
-            let cardItem = `
-                <li data-id="${index}" class="is-parent ">
-                    <div class="tile">
-                        <p>${card.answer}</p>
-                    </div>
-                </li>
+            <div class="tile is-child notification is-primary face flop">
+                <p><b>${card.answer}</b></p>
+            </div>
+        </div>
             `;
-            lessonCardsUList.innerHTML += cardItem;
-        }
+        lessonCardsUList.innerHTML += lessoncardItem;
     });
 
     setRotateCardButtonsEventListeners();
@@ -90,18 +81,27 @@ function setDeleteCardButtonsEventListeners() {
 
     for (let button of buttons) {
         button.addEventListener('click', () => {
-            deleteCard(button.dataset.id);
+            store.dispatch(removeCard(button.dataset.id));
         });
     }
 }
 
 function setRotateCardButtonsEventListeners() {
-    let cards = document.querySelectorAll('ul#lesson > li');
+    let cards = document.querySelectorAll('div#lesson .vertical');
 
     for (let card of cards) {
         card.addEventListener('click', () => {
-            rotateCard(card.dataset.id);
+            store.dispatch(rotateCard(card.dataset.id));
+            //store.dispatch(setCardTransition(card.dataset.id));
+            //card.classList.toggle('rotated');
+            //console.log('card rotated', card.classList);
+            // store.dispatch(rotateCard(card.dataset.id));
+            // console.log('rotation action dispatched');
         });
+        // card.addEventListener('click', () => {
+        //     store.dispatch(rotateCard(card.dataset.id));
+        //     //console.log('rotation action dispatched');
+        // });
     }
 }
 
