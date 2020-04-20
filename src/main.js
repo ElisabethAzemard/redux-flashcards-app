@@ -1,7 +1,7 @@
 require('./style.scss');
 
 import store from './store/store';
-import { addCard, removeCard, rotateCard, setCardTransition } from './actions/actions';
+import { addCard, removeCard, rotateCard, toggleSuccessMessage } from './actions/actions';
 
 console.log(store.getState());
 
@@ -9,6 +9,8 @@ console.log(store.getState());
 let cardsUList = document.getElementById('cards');
 let lessonCardsUList = document.getElementById('lesson');
 let addCardForm = document.getElementById('addCard');
+let addCardFormNotification = document.getElementById('addCardFormSuccessMessage');
+let addCardButton = document.getElementById('addCardButton');
 let addCardQuestion = addCardForm['question'];
 let addCardAnswer = addCardForm['answer'];
 
@@ -16,6 +18,7 @@ let addCardAnswer = addCardForm['answer'];
 store.subscribe(() => {
     rendercards();
     renderstack();
+    renderSuccessMessage();
 });
 
 function rendercards() {
@@ -43,7 +46,6 @@ function rendercards() {
 
 function renderstack() {
     let lessonCards = store.getState().cards;
-    console.log("lessonCards:", lessonCards);
 
     lessonCardsUList.innerHTML = '';
     lessonCards.forEach((card, index) => {
@@ -63,7 +65,25 @@ function renderstack() {
     setRotateCardButtonsEventListeners();
 }
 
+function renderSuccessMessage() {
+    let notifications = store.getState().notifications;
+
+    notifications.forEach((notif) => {
+        if (notif.displayed) {
+            addCardFormNotification.innerHTML = `<div class="notification is-success is-light">${notif.message}</div>`;
+        } else {
+            addCardFormNotification.innerHTML = '';
+        }
+    });
+}
+
 // ------ Event Listeners ------
+addCardForm.addEventListener('input', () => {
+    if (addCardQuestion.value && addCardAnswer.value) {
+        addCardButton.disabled = false;
+    }
+});
+
 addCardForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -71,9 +91,12 @@ addCardForm.addEventListener('submit', (e) => {
     let answer = addCardAnswer.value;
 
     if (question && answer) {
-        // document.getElementById('addCardButton').setAttribute('disabled', false);
         store.dispatch(addCard(question, answer));
+        store.dispatch(toggleSuccessMessage());
     }
+
+    addCardButton.classList.add('is-success');
+    setTimeout(resetForm, 2000);
 });
 
 function setDeleteCardButtonsEventListeners() {
@@ -98,6 +121,14 @@ function setRotateCardButtonsEventListeners() {
     }
 }
 
+function resetForm() {
+    addCardForm.reset();
+    addCardButton.classList.remove('is-success');
+    addCardButton.disabled = true;
+    store.dispatch(toggleSuccessMessage());
+}
+
 // ------ Render the initial cards ------
 rendercards();
 renderstack();
+renderSuccessMessage();

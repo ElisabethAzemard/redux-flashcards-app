@@ -16,14 +16,14 @@ export function showAll() {
     return { type: SHOW_ALL };
 }
 
-export const SHOW_CARD = 'SHOW_CARD';
-
-export function showCard(id) {
-    return { type: SHOW_CARD, id: id };
-}
-
 export const ROTATE_CARD = 'ROTATE_CARD';
 
 export function rotateCard(id) {
     return { type: ROTATE_CARD, id: id };
+}
+
+export const TOGGLE_SUCCESS_MESSAGE = 'TOGGLE_SUCCESS_MESSAGE';
+
+export function toggleSuccessMessage() {
+    return { type: TOGGLE_SUCCESS_MESSAGE };
 }
