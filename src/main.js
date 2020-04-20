@@ -48,11 +48,11 @@ function renderstack() {
     lessonCardsUList.innerHTML = '';
     lessonCards.forEach((card, index) => {
         let lessoncardItem = `
-        <div data-id="${index}" class="tile is-parent vertical${card.rotated ? ' rotated' : ''}">
-            <div class="tile is-child notification is-primary face flip ">
+        <div data-id="${index}" class="column is-one-third vertical${card.rotated ? ' rotated' : ''}">
+            <div class="notification is-primary face flip ">
                 <p><b>${card.question}</b></p>
             </div>
-            <div class="tile is-child notification is-primary face flop">
+            <div class="notification is-primary face flop">
                 <p><b>${card.answer}</b></p>
             </div>
         </div>

@@ -7117,18 +7117,13 @@ label.panel-block {
   position: relative;
   perspective: 1000px;
   transition: all 2s;
-  cursor: pointer;
-  text-align: center;
-  width: 30%;
-  margin: 0 auto;
-  margin-bottom: 1px;
-  height: 100px; }
+  cursor: pointer; }
   .vertical .face {
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition: all 0.5s;
     position: absolute;
-    width: 100%;
+    width: calc(100% - 1.5rem);
     height: 100px; }
   .vertical .flip {
     transform: rotatex(0deg);
