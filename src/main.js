@@ -92,16 +92,9 @@ function setRotateCardButtonsEventListeners() {
     for (let card of cards) {
         card.addEventListener('click', () => {
             store.dispatch(rotateCard(card.dataset.id));
-            //store.dispatch(setCardTransition(card.dataset.id));
-            //card.classList.toggle('rotated');
-            //console.log('card rotated', card.classList);
-            // store.dispatch(rotateCard(card.dataset.id));
-            // console.log('rotation action dispatched');
+
         });
-        // card.addEventListener('click', () => {
-        //     store.dispatch(rotateCard(card.dataset.id));
-        //     //console.log('rotation action dispatched');
-        // });
+
     }
 }
 
