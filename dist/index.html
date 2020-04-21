@@ -13,11 +13,18 @@
 
 <body>
     <header class="header">
-        <h1 class="title is-1">Redux flashcards App</h1>
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h1 class="title">Redux flashcards App</h1>
+                    <h2 class="subtitle">Quiet everybody... Action!</h1>
+                </div>
+            </div>
+        </section>
     </header>
 
     <section class="section">
-        <h3 class="title is-3">Add a Card</h3>
+        <h3 class="title is-3">Add a card</h3>
         <form id="addCard">
             <div class="field">
                 <label for="question" class="label">Question:</label>
@@ -32,8 +39,8 @@
                 </div>
             </div>
             <button type="submit" class="button is-primary" id="addCardButton" disabled="true">Add Card</button>
-            <div id="addCardFormSuccessMessage" class="notification is-success is-light"></div>
         </form>
+        <div id="addCardSuccessMessage" class="notification is-success is-light"></div>
     </section>
 
     <hr>
@@ -49,8 +56,7 @@
 
     <section class="section">
         <h3 class="title is-3">Learn cards</h3>
-        <div id="lesson" class="columns is-multiline">
-        </div>
+        <div id="lesson" class="columns is-multiline"></div>
     </section>
 
     <script src="js/bundle.js"></script>

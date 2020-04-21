@@ -12,8 +12,8 @@ const initialList = [
         rotated: false
     },
     {
-        question: "Qui je suis ?!",
-        answer: "Je suis le gardien des âmes perdues, je suis le très puissant, le très agréable, le très indestructible... Mushu.",
+        question: "Who are you?",
+        answer: "Who am I? Who am I? I am the guardian of lost souls! I am the powerful, the pleasurable, the indestructible Mushu! I'm pretty hot, uh?",
         rotated: false
     },
 ];

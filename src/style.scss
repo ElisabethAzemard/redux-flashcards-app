@@ -1,6 +1,9 @@
 @charset 'utf-8';
 @import "~bulma/bulma";
 
+$spacing: .75rem;
+$big-spacing: 1.5rem;
+
 .vertical {
     position:relative;
     perspective: 1000px;
@@ -8,14 +11,7 @@
     transition: all 2s;
     cursor: pointer;
 
-    $flipbg: #00d1b2;
-
-    // Extra
-    // text-align: center;
-    // width: 30%;
-    // margin: 0 auto;
-    // margin-bottom:1px;
-    // height: 100px;
+    height: calc(150px + #{$big-spacing});
 
     .face {
         $timing: .5s;
@@ -28,25 +24,22 @@
         backface-visibility: hidden;
         transition: all $timing;
 
-
         position:absolute;
-        width: calc(100% - 1.5rem);
-        height: 100px;
+        width: calc(100% - #{$big-spacing});
+        height: calc(100% - #{$big-spacing});
     }
 
     .flip {
         transform: rotatex(0deg);
         z-index:10;
-        background:$flipbg; // Extra
         transition: transform .5s;
     }
 
     .flop {
         transform: rotatex(-180deg);
         z-index:0;
-        color: #00947e;
-        background: #ebfffc; // Extra
         transition: transform .5s;
+        overflow: scroll;
     }
 
     &.rotated .flip {
@@ -56,4 +49,16 @@
     &.rotated .flop {
         transform: rotatex(0deg);
     }
+}
+
+.message, .notification {
+    height: 100%;
+}
+
+#addCardSuccessMessage {
+    margin-top: $spacing;
+}
+
+.d-none {
+    display: none;
 }

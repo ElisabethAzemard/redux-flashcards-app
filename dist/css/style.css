@@ -7117,27 +7117,35 @@ label.panel-block {
   position: relative;
   perspective: 1000px;
   transition: all 2s;
-  cursor: pointer; }
+  cursor: pointer;
+  height: calc(150px + 1.5rem); }
   .vertical .face {
     transform-style: preserve-3d;
     backface-visibility: hidden;
     transition: all 0.5s;
     position: absolute;
     width: calc(100% - 1.5rem);
-    height: 100px; }
+    height: calc(100% - 1.5rem); }
   .vertical .flip {
     transform: rotatex(0deg);
     z-index: 10;
-    background: #00d1b2;
     transition: transform .5s; }
   .vertical .flop {
     transform: rotatex(-180deg);
     z-index: 0;
-    color: #00947e;
-    background: #ebfffc;
-    transition: transform .5s; }
+    transition: transform .5s;
+    overflow: scroll; }
   .vertical.rotated .flip {
     transform: rotatex(180deg); }
   .vertical.rotated .flop {
     transform: rotatex(0deg); }
+
+.message, .notification {
+  height: 100%; }
+
+#addCardSuccessMessage {
+  margin-top: 0.75rem; }
+
+.d-none {
+  display: none; }
 
