@@ -1,12 +1,12 @@
 import cardsReducer from './cardsReducer';
 import visibilityFilter from './visibilityFilter';
-import notificationsReducer from './notificationsReducer';
+import setFormState from './formReducer';
 import { combineReducers } from 'redux';
 
 const reducers = combineReducers({
     cards: cardsReducer,
     visibility: visibilityFilter,
-    notifications: notificationsReducer
+    form: setFormState
 });
 
 export default reducers;

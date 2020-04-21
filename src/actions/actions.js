@@ -27,3 +27,27 @@ export const TOGGLE_SUCCESS_MESSAGE = 'TOGGLE_SUCCESS_MESSAGE';
 export function toggleSuccessMessage() {
     return { type: TOGGLE_SUCCESS_MESSAGE };
 }
+
+export const SUBMIT_FORM = 'SUBMIT_FORM';
+
+export function submitForm() {
+    return { type: SUBMIT_FORM };
+}
+
+export const RESET_FORM = 'RESET_FORM';
+
+export function resetForm() {
+    return { type: RESET_FORM };
+}
+
+export const FILL_FORM = 'FILL_FORM';
+
+export function fillForm(question, answer) {
+    return { type: FILL_FORM, question: question, answer: answer};
+}
+
+export const COMPLETE_FORM = 'COMPLETE_FORM';
+
+export function completeForm(question, answer) {
+    return { type: COMPLETE_FORM, question: question, answer: answer};
+}

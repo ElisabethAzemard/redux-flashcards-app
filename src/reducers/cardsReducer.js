@@ -11,6 +11,11 @@ const initialList = [
         answer: "Home, obviously.",
         rotated: false
     },
+    {
+        question: "Qui je suis ?!",
+        answer: "Je suis le gardien des âmes perdues, je suis le très puissant, le très agréable, le très indestructible... Mushu.",
+        rotated: false
+    },
 ];
 
 function cardsReducer(cards = initialList, action) {
