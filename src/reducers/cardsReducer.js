@@ -7,7 +7,7 @@ const initialList = [
         rotated: false
     },
     {
-        question: "Where's my brawley?",
+        question: "Where's my brolly?",
         answer: "Home, obviously.",
         rotated: false
     },
